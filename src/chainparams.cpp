@@ -466,6 +466,7 @@ public:
         consensus.fStrictChainId = false;
         consensus.nHeightEffective = 0;
         consensus.fAllowLegacyBlocks = true;
+	consensus.nChainIdEnforcedHeight = 10000;
 
         // Blocks 145000 - 157499 are Digishield without minimum difficulty on all blocks
         digishieldConsensus = consensus;
@@ -605,7 +606,8 @@ public:
         consensus.nAuxpowChainId = 0x0062; // 98 - Josh Wise!
         consensus.fStrictChainId = true;
         consensus.fAllowLegacyBlocks = true;
-
+        consensus.nChainIdEnforcedHeight = 10000;
+	    
         // Dogmcoin parameters
         consensus.fSimplifiedRewards = true;
         consensus.nCoinbaseMaturity = 60; // For easier testability in RPC tests
