@@ -132,10 +132,10 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 0; // Disabled
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000079594d5cd429eb00c51");  // DOGM block height #5285002 chainwork
+        consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000083fb3acbcd8523847b9");  // DOGM block height #5660000 chainwork
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x3a08246359b16f85383139ce6851daea3e44c85c1ef3037a4bbd968aacb18219"); // DOGM block height #5285082
+        consensus.defaultAssumeValid = uint256S("0x6149ccfa9f9072c97d2eec802ff09e580ce8bdc4449f9cedd818ed8b9905731d"); // DOGM block height #5660000
 
         // AuxPoW parameters
         consensus.nAuxpowChainId = 0x0062; // 98 - Josh Wise!
@@ -391,13 +391,14 @@ public:
 	    ( 5081381, uint256S("0x8bd98d329bc9cfef3dc8a4be6d980efe2175476e022abc260febcf32a55c9ba1"))
 	    ( 5212618, uint256S("0x812e9f7b20b41c6775d37c4dd1ca92eaa8f79fc2b51da037aa1967952d6c8c45"))
 	    ( 5285283, uint256S("0xcd4503a576c270b9f85037a50f54456fa671c99e453949a63e55aae8c581e503"))
+	    ( 5660000, uint256S("0x6149ccfa9f9072c97d2eec802ff09e580ce8bdc4449f9cedd818ed8b9905731d"))
         };
 
         chainTxData = ChainTxData{
             // Data as of block e4b4ecda4c022406c502a247c0525480268ce7abbbef632796e8ca1646425e75 (height 3854173).
             // Tx estimate based on average of year 2021 (~40k transactions per day)
-            1725923055, // * UNIX timestamp of last checkpoint block (UTC)
-            86391271,   // * total number of transactions between genesis and last checkpoint
+            1750496361, // * UNIX timestamp of last checkpoint block (UTC)
+            86779236,   // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
             0.46        // * estimated number of transactions per second after checkpoint
         };
