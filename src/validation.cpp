@@ -1813,6 +1813,17 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
         return true;
     }
 
+    // Height based check for checking ChainId here as it was disabled from header pow check
+    if (!block.IsLegacy() && consensus.fStrictChainId && block.GetChainId() != consensus.nAuxpowChainId &&
+        pindex->nHeight >= consensus.nChainIdEnforcedHeight) {
+        LogPrintf("%s: Block %d has issues with ChainId got %d expected %d\n", __func__, pindex->nHeight,
+            block.GetChainId(), consensus.nAuxpowChainId);
+        return error("%s : block does not have our chain ID"
+                     " (got %d, expected %d, full nVersion %d)",
+                     __func__, block.GetChainId(),
+                     consensus.nAuxpowChainId, block.nVersion);
+    }
+    
     bool fScriptChecks = true;
     if (!hashAssumeValid.IsNull()) {
         // We've been configured with the hash of a block which has been externally verified to have a valid history.
@@ -3086,6 +3097,17 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
         return state.DoS(100, error("%s : auxpow blocks are not allowed at height %d, parameters effective from %d",
                                     __func__, pindexPrev->nHeight + 1, consensusParams.nHeightEffective),
                          REJECT_INVALID, "early-auxpow-block");
+    
+    // Height based check for checking ChainId here as it was disabled from header pow check
+    if (!block.IsLegacy() && consensusParams.fStrictChainId && block.GetChainId() != consensusParams.nAuxpowChainId &&
+        nHeight >= consensusParams.nChainIdEnforcedHeight) {
+        LogPrintf("%s: Block %d has issues with ChainId got %d expected %d\n", __func__, nHeight,
+            block.GetChainId(), consensusParams.nAuxpowChainId);
+        return state.DoS(100, error("%s : block does not have our chain ID"
+                                    " (got %d, expected %d, full nVersion %d)",
+                                    __func__, block.GetChainId(), consensusParams.nAuxpowChainId, block.nVersion),
+                         REJECT_INVALID, "invalid-dynamic-chainid");
+    }
 
     // Check proof of work
     if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams))

@@ -79,6 +79,7 @@ struct Params {
     int32_t nAuxpowChainId;
     bool fStrictChainId;
     bool fAllowLegacyBlocks;
+    uint64_t nChainIdEnforcedHeight;
 
     /** Height-aware consensus parameters */
     uint32_t nHeightEffective; // When these parameters come into use
