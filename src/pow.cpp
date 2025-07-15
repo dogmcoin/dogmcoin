@@ -36,6 +36,19 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
     // Genesis block
     if (pindexLast == NULL)
         return nProofOfWorkLimit;
+    
+    // Use minimum difficulty for special blocks
+    // Bitcoin "diff1" instead of "scrypt diff1" which is 1/65536 from it
+    // Return compact format of bitcoins diff1
+    const int nNextHeight = pindexLast->nHeight + 1;
+    if (nNextHeight == 5680000 || nNextHeight == 6673600 || nNextHeight == 7724800 ||
+        nNextHeight == 8776000 || nNextHeight == 9827200 || nNextHeight == 10878400 ||
+        nNextHeight == 11929600 || nNextHeight == 12980800 || nNextHeight == 14032000 ||
+        nNextHeight == 15083200) {
+        
+        arith_uint256 nProofOfWorkAdjusted = UintToArith256(params.powLimit) / 65536;
+        return nProofOfWorkAdjusted.GetCompact();
+    }
 
     // Dogmcoin: Special rules for minimum difficulty blocks with Digishield
     if (AllowDigishieldMinDifficultyForBlock(pindexLast, pblock, params))
