@@ -74,24 +74,34 @@ private:
     Consensus::Params notminDifficultyConsensus;
     Consensus::Params D1AuxpowChainIdConsensus;
     Consensus::Params D2AuxpowChainIdConsensus;
+    Consensus::Params D2notminDifficultyConsensus;
     Consensus::Params D3AuxpowChainIdConsensus;
     Consensus::Params D4AuxpowChainIdConsensus;
+    Consensus::Params D4notminDifficultyConsensus;
     Consensus::Params D5AuxpowChainIdConsensus;
     Consensus::Params D6AuxpowChainIdConsensus;
+    Consensus::Params D6notminDifficultyConsensus;
     Consensus::Params D7AuxpowChainIdConsensus;
     Consensus::Params D8AuxpowChainIdConsensus;
+    Consensus::Params D8notminDifficultyConsensus;
     Consensus::Params D9AuxpowChainIdConsensus;
     Consensus::Params D10AuxpowChainIdConsensus;
+    Consensus::Params D10notminDifficultyConsensus;
     Consensus::Params D11AuxpowChainIdConsensus;
     Consensus::Params D12AuxpowChainIdConsensus;
+    Consensus::Params D12notminDifficultyConsensus;
     Consensus::Params D13AuxpowChainIdConsensus;
     Consensus::Params D14AuxpowChainIdConsensus;
+    Consensus::Params D14notminDifficultyConsensus;
     Consensus::Params D15AuxpowChainIdConsensus;
     Consensus::Params D16AuxpowChainIdConsensus;
+    Consensus::Params D16notminDifficultyConsensus;
     Consensus::Params D17AuxpowChainIdConsensus;
     Consensus::Params D18AuxpowChainIdConsensus;
+    Consensus::Params D18notminDifficultyConsensus;
     Consensus::Params D19AuxpowChainIdConsensus;
     Consensus::Params D20AuxpowChainIdConsensus;
+    Consensus::Params D20notminDifficultyConsensus;
 public:
     CMainParams() {
         strNetworkID = "main";
@@ -176,9 +186,16 @@ public:
         D2AuxpowChainIdConsensus = D1AuxpowChainIdConsensus;   
         D2AuxpowChainIdConsensus.nAuxpowChainId = 0x0062; // 98 - Josh Wise!
         D2AuxpowChainIdConsensus.nHeightEffective = 5622400;
+        // Blocks 5622400 Minimum difficulty blocks allowed
+        D2AuxpowChainIdConsensus.fPowAllowMinDifficultyBlocks = true;
+
+        // Blocks 5622410+ Minimum difficulty blocks are not allowed
+        D2notminDifficultyConsensus = D2AuxpowChainIdConsensus;
+        D2notminDifficultyConsensus.nHeightEffective = 5622410;
+        D2notminDifficultyConsensus.fPowAllowMinDifficultyBlocks = false;
 
         // Dogmcoin Auxpow chain ID change every 525600 blocks.
-        D3AuxpowChainIdConsensus = D2AuxpowChainIdConsensus;   
+        D3AuxpowChainIdConsensus = D2notminDifficultyConsensus;   
         D3AuxpowChainIdConsensus.nAuxpowChainId = 0x006C; // 108 - msy2008!
         D3AuxpowChainIdConsensus.nHeightEffective = 6148000;
 
@@ -186,9 +203,16 @@ public:
         D4AuxpowChainIdConsensus = D3AuxpowChainIdConsensus;   
         D4AuxpowChainIdConsensus.nAuxpowChainId = 0x0062; // 98 - Josh Wise!
         D4AuxpowChainIdConsensus.nHeightEffective = 6673600;
+        // Blocks 6673600 Minimum difficulty blocks allowed
+        D4AuxpowChainIdConsensus.fPowAllowMinDifficultyBlocks = true;
+
+        // Blocks 6673610+ Minimum difficulty blocks are not allowed
+        D4notminDifficultyConsensus = D4AuxpowChainIdConsensus;
+        D4notminDifficultyConsensus.nHeightEffective = 6673610;
+        D4notminDifficultyConsensus.fPowAllowMinDifficultyBlocks = false;
 
 	// Dogmcoin Auxpow chain ID change every 525600 blocks.
-        D5AuxpowChainIdConsensus = D4AuxpowChainIdConsensus;   
+        D5AuxpowChainIdConsensus = D4notminDifficultyConsensus;   
         D5AuxpowChainIdConsensus.nAuxpowChainId = 0x006C; // 108 - msy2008!
         D5AuxpowChainIdConsensus.nHeightEffective = 7199200;
 
@@ -196,9 +220,16 @@ public:
         D6AuxpowChainIdConsensus = D5AuxpowChainIdConsensus;   
         D6AuxpowChainIdConsensus.nAuxpowChainId = 0x0062; // 98 - Josh Wise!
         D6AuxpowChainIdConsensus.nHeightEffective = 7724800;
+        // Blocks 7724800 Minimum difficulty blocks allowed
+        D6AuxpowChainIdConsensus.fPowAllowMinDifficultyBlocks = true;
+
+        // Blocks 7724810+ Minimum difficulty blocks are not allowed
+        D6notminDifficultyConsensus = D6AuxpowChainIdConsensus;
+        D6notminDifficultyConsensus.nHeightEffective = 7724810;
+        D6notminDifficultyConsensus.fPowAllowMinDifficultyBlocks = false;
 
         // Dogmcoin Auxpow chain ID change every 525600 blocks.
-        D7AuxpowChainIdConsensus = D6AuxpowChainIdConsensus;   
+        D7AuxpowChainIdConsensus = D6notminDifficultyConsensus;   
         D7AuxpowChainIdConsensus.nAuxpowChainId = 0x006C; // 108 - msy2008!
         D7AuxpowChainIdConsensus.nHeightEffective = 8250400;
 
@@ -206,9 +237,16 @@ public:
         D8AuxpowChainIdConsensus = D7AuxpowChainIdConsensus;   
         D8AuxpowChainIdConsensus.nAuxpowChainId = 0x0062; // 98 - Josh Wise!
         D8AuxpowChainIdConsensus.nHeightEffective = 8776000;
+        // Blocks 8776000 Minimum difficulty blocks allowed
+        D8AuxpowChainIdConsensus.fPowAllowMinDifficultyBlocks = true;
+
+        // Blocks 8776010+ Minimum difficulty blocks are not allowed
+        D8notminDifficultyConsensus = D8AuxpowChainIdConsensus;
+        D8notminDifficultyConsensus.nHeightEffective = 8776010;
+        D8notminDifficultyConsensus.fPowAllowMinDifficultyBlocks = false;
 
 	// Dogmcoin Auxpow chain ID change every 525600 blocks.
-        D9AuxpowChainIdConsensus = D8AuxpowChainIdConsensus;   
+        D9AuxpowChainIdConsensus = D8notminDifficultyConsensus;   
         D9AuxpowChainIdConsensus.nAuxpowChainId = 0x006C; // 108 - msy2008!
         D9AuxpowChainIdConsensus.nHeightEffective = 9301600;
 
@@ -216,9 +254,16 @@ public:
         D10AuxpowChainIdConsensus = D9AuxpowChainIdConsensus;   
         D10AuxpowChainIdConsensus.nAuxpowChainId = 0x0062; // 98 - Josh Wise!
         D10AuxpowChainIdConsensus.nHeightEffective = 9827200;
+        // Blocks 9301600 Minimum difficulty blocks allowed
+        D10AuxpowChainIdConsensus.fPowAllowMinDifficultyBlocks = true;
+
+        // Blocks 9301610+ Minimum difficulty blocks are not allowed
+        D10notminDifficultyConsensus = D10AuxpowChainIdConsensus;
+        D10notminDifficultyConsensus.nHeightEffective = 9301610;
+        D10notminDifficultyConsensus.fPowAllowMinDifficultyBlocks = false;
 
         // Dogmcoin Auxpow chain ID change every 525600 blocks.
-        D11AuxpowChainIdConsensus = D10AuxpowChainIdConsensus;
+        D11AuxpowChainIdConsensus = D10notminDifficultyConsensus;
         D11AuxpowChainIdConsensus.nAuxpowChainId = 0x006C; // 108 - msy2008!
         D11AuxpowChainIdConsensus.nHeightEffective = 10352800;
 
@@ -226,9 +271,16 @@ public:
         D12AuxpowChainIdConsensus = D11AuxpowChainIdConsensus;
         D12AuxpowChainIdConsensus.nAuxpowChainId = 0x0062; // 98 - Josh Wise!
         D12AuxpowChainIdConsensus.nHeightEffective = 10878400;
+        // Blocks 10878400 Minimum difficulty blocks allowed
+        D12AuxpowChainIdConsensus.fPowAllowMinDifficultyBlocks = true;
+
+        // Blocks 10878410+ Minimum difficulty blocks are not allowed
+        D12notminDifficultyConsensus = D12AuxpowChainIdConsensus;
+        D12notminDifficultyConsensus.nHeightEffective = 10878410;
+        D12notminDifficultyConsensus.fPowAllowMinDifficultyBlocks = false;
 
         // Dogmcoin Auxpow chain ID change every 525600 blocks.
-        D13AuxpowChainIdConsensus = D12AuxpowChainIdConsensus;
+        D13AuxpowChainIdConsensus = D12notminDifficultyConsensus;
         D13AuxpowChainIdConsensus.nAuxpowChainId = 0x006C; // 108 - msy2008!
         D13AuxpowChainIdConsensus.nHeightEffective = 11404000;
 
@@ -236,9 +288,16 @@ public:
         D14AuxpowChainIdConsensus = D13AuxpowChainIdConsensus;
         D14AuxpowChainIdConsensus.nAuxpowChainId = 0x0062; // 98 - Josh Wise!
         D14AuxpowChainIdConsensus.nHeightEffective = 11929600;
+        // Blocks 11929600 Minimum difficulty blocks allowed
+        D14AuxpowChainIdConsensus.fPowAllowMinDifficultyBlocks = true;
+
+        // Blocks 11929610+ Minimum difficulty blocks are not allowed
+        D14notminDifficultyConsensus = D14AuxpowChainIdConsensus;
+        D14notminDifficultyConsensus.nHeightEffective = 11929610;
+        D14notminDifficultyConsensus.fPowAllowMinDifficultyBlocks = false;
 
         // Dogmcoin Auxpow chain ID change every 525600 blocks.
-        D15AuxpowChainIdConsensus = D14AuxpowChainIdConsensus;
+        D15AuxpowChainIdConsensus = D14notminDifficultyConsensus;
         D15AuxpowChainIdConsensus.nAuxpowChainId = 0x006C; // 108 - msy2008!
         D15AuxpowChainIdConsensus.nHeightEffective = 12455200;
 
@@ -246,9 +305,16 @@ public:
         D16AuxpowChainIdConsensus = D15AuxpowChainIdConsensus;
         D16AuxpowChainIdConsensus.nAuxpowChainId = 0x0062; // 98 - Josh Wise!
         D16AuxpowChainIdConsensus.nHeightEffective = 12980800;
+        // Blocks 12980800 Minimum difficulty blocks allowed
+        D16AuxpowChainIdConsensus.fPowAllowMinDifficultyBlocks = true;
+
+        // Blocks 12980810+ Minimum difficulty blocks are not allowed
+        D16notminDifficultyConsensus = D16AuxpowChainIdConsensus;
+        D16notminDifficultyConsensus.nHeightEffective = 12980810;
+        D16notminDifficultyConsensus.fPowAllowMinDifficultyBlocks = false;
 
         // Dogmcoin Auxpow chain ID change every 525600 blocks.
-        D17AuxpowChainIdConsensus = D16AuxpowChainIdConsensus;
+        D17AuxpowChainIdConsensus = D16notminDifficultyConsensus;
         D17AuxpowChainIdConsensus.nAuxpowChainId = 0x006C; // 108 - msy2008!
         D17AuxpowChainIdConsensus.nHeightEffective = 13506400;
 
@@ -256,9 +322,16 @@ public:
         D18AuxpowChainIdConsensus = D17AuxpowChainIdConsensus;
         D18AuxpowChainIdConsensus.nAuxpowChainId = 0x0062; // 98 - Josh Wise!
         D18AuxpowChainIdConsensus.nHeightEffective = 14032000;
+        // Blocks 14032000 Minimum difficulty blocks allowed
+        D18AuxpowChainIdConsensus.fPowAllowMinDifficultyBlocks = true;
+
+        // Blocks 14032010+ Minimum difficulty blocks are not allowed
+        D18notminDifficultyConsensus = D18AuxpowChainIdConsensus;
+        D18notminDifficultyConsensus.nHeightEffective = 14032010;
+        D18notminDifficultyConsensus.fPowAllowMinDifficultyBlocks = false;
 
         // Dogmcoin Auxpow chain ID change every 525600 blocks.
-        D19AuxpowChainIdConsensus = D18AuxpowChainIdConsensus;
+        D19AuxpowChainIdConsensus = D18notminDifficultyConsensus;
         D19AuxpowChainIdConsensus.nAuxpowChainId = 0x006C; // 108 - msy2008!
         D19AuxpowChainIdConsensus.nHeightEffective = 14557600;
 
@@ -266,6 +339,13 @@ public:
         D20AuxpowChainIdConsensus = D19AuxpowChainIdConsensus;
         D20AuxpowChainIdConsensus.nAuxpowChainId = 0x0062; // 98 - Josh Wise!
         D20AuxpowChainIdConsensus.nHeightEffective = 15083200;
+        // Blocks 15083200 Minimum difficulty blocks allowed
+        D20AuxpowChainIdConsensus.fPowAllowMinDifficultyBlocks = true;
+
+        // Blocks 15083210+ Minimum difficulty blocks are not allowed
+        D20notminDifficultyConsensus = D20AuxpowChainIdConsensus;
+        D20notminDifficultyConsensus.nHeightEffective = 15083210;
+        D20notminDifficultyConsensus.fPowAllowMinDifficultyBlocks = false;
 
         // Assemble the binary search tree of consensus parameters
         pConsensusRoot = &digishieldConsensus;
@@ -275,23 +355,32 @@ public:
         minDifficultyConsensus.pRight = &notminDifficultyConsensus;
 	notminDifficultyConsensus.pRight = &D1AuxpowChainIdConsensus;
 	D1AuxpowChainIdConsensus.pRight = &D2AuxpowChainIdConsensus;
-	D2AuxpowChainIdConsensus.pRight = &D3AuxpowChainIdConsensus;
+	D2AuxpowChainIdConsensus.pRight = &D2notminDifficultyConsensus;
+	D2notminDifficultyConsensus.pRight = &D3AuxpowChainIdConsensus;
 	D3AuxpowChainIdConsensus.pRight = &D4AuxpowChainIdConsensus;
-	D4AuxpowChainIdConsensus.pRight = &D5AuxpowChainIdConsensus;
+	D4AuxpowChainIdConsensus.pRight = &D4notminDifficultyConsensus;
+	D4notminDifficultyConsensus.pRight = &D5AuxpowChainIdConsensus;
 	D5AuxpowChainIdConsensus.pRight = &D6AuxpowChainIdConsensus;
-	D6AuxpowChainIdConsensus.pRight = &D7AuxpowChainIdConsensus;
+	D6AuxpowChainIdConsensus.pRight = &D6notminDifficultyConsensus;
+	D6notminDifficultyConsensus.pRight = &D7AuxpowChainIdConsensus;
 	D7AuxpowChainIdConsensus.pRight = &D8AuxpowChainIdConsensus;
-	D8AuxpowChainIdConsensus.pRight = &D9AuxpowChainIdConsensus;
+	D8AuxpowChainIdConsensus.pRight = &D8notminDifficultyConsensus;
+	D8notminDifficultyConsensus.pRight = &D9AuxpowChainIdConsensus;
 	D9AuxpowChainIdConsensus.pRight = &D10AuxpowChainIdConsensus;
-        D10AuxpowChainIdConsensus.pRight = &D11AuxpowChainIdConsensus;
+	D10AuxpowChainIdConsensus.pRight = &D10notminDifficultyConsensus;
+	D10notminDifficultyConsensus.pRight = &D11AuxpowChainIdConsensus;
         D11AuxpowChainIdConsensus.pRight = &D12AuxpowChainIdConsensus;
-        D12AuxpowChainIdConsensus.pRight = &D13AuxpowChainIdConsensus;
+	D12AuxpowChainIdConsensus.pRight = &D12notminDifficultyConsensus;
+	D12notminDifficultyConsensus.pRight = &D13AuxpowChainIdConsensus;
         D13AuxpowChainIdConsensus.pRight = &D14AuxpowChainIdConsensus;
-        D14AuxpowChainIdConsensus.pRight = &D15AuxpowChainIdConsensus;
+	D14AuxpowChainIdConsensus.pRight = &D14notminDifficultyConsensus;
+	D14notminDifficultyConsensus.pRight = &D15AuxpowChainIdConsensus;
         D15AuxpowChainIdConsensus.pRight = &D16AuxpowChainIdConsensus;
-        D16AuxpowChainIdConsensus.pRight = &D17AuxpowChainIdConsensus;
+	D16AuxpowChainIdConsensus.pRight = &D16notminDifficultyConsensus;
+	D16notminDifficultyConsensus.pRight = &D17AuxpowChainIdConsensus;
         D17AuxpowChainIdConsensus.pRight = &D18AuxpowChainIdConsensus;
-        D18AuxpowChainIdConsensus.pRight = &D19AuxpowChainIdConsensus;
+	D18AuxpowChainIdConsensus.pRight = &D18notminDifficultyConsensus;
+	D18notminDifficultyConsensus.pRight = &D19AuxpowChainIdConsensus;
         D19AuxpowChainIdConsensus.pRight = &D20AuxpowChainIdConsensus;
 
         /**
@@ -316,24 +405,34 @@ public:
         notminDifficultyConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         D1AuxpowChainIdConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
 	D2AuxpowChainIdConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
+	D2notminDifficultyConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
 	D3AuxpowChainIdConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
 	D4AuxpowChainIdConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
+	D4notminDifficultyConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
 	D5AuxpowChainIdConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
 	D6AuxpowChainIdConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
+	D6notminDifficultyConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
 	D7AuxpowChainIdConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
 	D8AuxpowChainIdConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
+	D8notminDifficultyConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
 	D9AuxpowChainIdConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         D10AuxpowChainIdConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
+	D10notminDifficultyConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         D11AuxpowChainIdConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         D12AuxpowChainIdConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
+	D12notminDifficultyConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         D13AuxpowChainIdConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         D14AuxpowChainIdConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
+	D14notminDifficultyConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         D15AuxpowChainIdConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         D16AuxpowChainIdConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
+	D16notminDifficultyConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         D17AuxpowChainIdConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         D18AuxpowChainIdConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
+	D18notminDifficultyConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         D19AuxpowChainIdConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         D20AuxpowChainIdConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
+	D20notminDifficultyConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         assert(consensus.hashGenesisBlock == uint256S("0x1a91e3dace36e2be3bf030a65679fe821aa1d6ef92e7c9902eb318182c355691"));
         assert(genesis.hashMerkleRoot == uint256S("0x5b2a3f53f605d62c53e62932dac6925e3d74afa5a4b459745c36d42d0ed26a69"));
 
